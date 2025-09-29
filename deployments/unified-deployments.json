@@ -1,0 +1,135 @@
+{
+  "manifestVersion": "1.0",
+  "network": "celo-alfajores",
+  "chainId": 44787,
+  "lastUpdated": "2025-09-29T04:11:00.000Z",
+  "contracts": {
+    "FlameBornToken": {
+      "name": "FlameBornToken",
+      "type": "upgradeable-proxy",
+      "category": "erc20-token",
+      "proxy": {
+        "address": "0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1",
+        "txHash": "0x080434b54b2bf73b32ab1b88a22d76559f6b816d3d926c1361336e63d29bd16a",
+        "deployer": "0x2E75287C542B9b111906D961d58f2617059dDe3c",
+        "deployedAt": "2025-09-29T03:30:00.000Z"
+      },
+      "implementation": {
+        "address": "0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1",
+        "txHash": "0xf204413d3e4913c7b35f59490f9f76383e833c23df7f4f907f3470f744cf60fd",
+        "deployedAt": "2025-07-28T00:00:00.000Z"
+      },
+      "verification": {
+        "status": "verified",
+        "explorerUrl": "https://alfajores.celoscan.io/address/0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1#code",
+        "sourceCode": "github.com/FlameBorn-1/FLB",
+        "commitHash": "96fbf6c7507169cb1ee358010d2af224cce04330"
+      },
+      "metadata": {
+        "symbol": "FLB",
+        "decimals": 18,
+        "totalSupply": "1000000",
+        "features": [
+          "ERC20",
+          "UUPS",
+          "Burnable",
+          "Pausable",
+          "Permit"
+        ]
+      }
+    },
+    "FlameBornEngine": {
+      "name": "FlameBornEngine",
+      "type": "upgradeable-proxy",
+      "category": "business-logic",
+      "proxy": {
+        "address": "0x82cA6C5FE9d7E834D908a2482aB76A51D64f5BB4",
+        "txHash": "0x4ddd8b91aef04efd8dc5b20702826f989354430a7dfdcee950894945b419e59e",
+        "deployer": "0x2E75287C542B9b111906D961d58f2617059dDe3c",
+        "deployedAt": "2025-09-22T16:13:02.301Z"
+      },
+      "implementation": {
+        "address": "0x82cA6C5FE9d7E834D908a2482aB76A51D64f5BB4",
+        "txHash": "0xf16d8fc88e4c83d63f317f9f57e5b06adb6b673d2cfb327bda6417e5f9d6dc67",
+        "deployedAt": "2025-07-31T01:35:59.542Z"
+      },
+      "verification": {
+        "status": "verified",
+        "explorerUrl": "https://alfajores.celoscan.io/address/0x82cA6C5FE9d7E834D908a2482aB76A51D64f5BB4#code",
+        "sourceCode": "github.com/FlameBorn-1/FLB"
+      },
+      "dependencies": {
+        "tokenContract": "0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1",
+        "nftContract": "0x1566c75a1Bad93a9fa5E2Da690395987E36e08e8"
+      },
+      "metadata": {
+        "tag": "FLB-EN",
+        "features": [
+          "Learn-to-Earn",
+          "Actor Verification",
+          "Donation Rewards",
+          "Quest System"
+        ],
+        "roles": [
+          "REGISTRAR_ROLE",
+          "QUEST_ADMIN_ROLE",
+          "DEFAULT_ADMIN_ROLE"
+        ]
+      }
+    },
+    "FlameBornHealthIDNFT": {
+      "name": "FlameBornHealthIDNFT",
+      "type": "non-upgradeable",
+      "category": "nft-contract",
+      "contract": {
+        "address": "0x1566c75a1Bad93a9fa5E2Da690395987E36e08e8",
+        "deployer": "0x2E75287C542B9b111906D961d58f2617059dDe3c",
+        "deployedAt": "2025-07-28T00:00:00.000Z"
+      },
+      "verification": {
+        "status": "verified",
+        "explorerUrl": "https://alfajores.celoscan.io/address/0x1566c75a1Bad93a9fa5E2Da690395987E36e08e8#code",
+        "sourceCode": "github.com/FlameBorn-1/FLB"
+      },
+      "metadata": {
+        "symbol": "FLB-HNFT",
+        "type": "ERC721",
+        "features": [
+          "Soulbound",
+          "Non-transferable",
+          "Role-based minting",
+          "Metadata URI"
+        ]
+      }
+    }
+  },
+  "ecosystem": {
+    "totalContracts": 3,
+    "upgradeableContracts": 2,
+    "dependencies": {
+      "tokenUsedByEngine": true,
+      "nftUsedByEngine": true
+    }
+  },
+  "deployment": {
+    "scripts": {
+      "deployAll": "scripts/deploy_all.ts",
+      "deployToken": "scripts/deploy_flameborn_celo.ts",
+      "deployEngine": "scripts/deploy_engine_celo.ts",
+      "deployNFT": "scripts/deploy_flamebornhealthidnft_celo.ts"
+    },
+    "verification": {
+      "verifyAll": "scripts/verify_all.ts",
+      "verifyToken": "scripts/verify_flameborn_celo.ts",
+      "verifyEngine": "scripts/verify_engine_celo.ts",
+      "verifyNFT": "scripts/verify_healthidnft.ts"
+    }
+  },
+  "networkInfo": {
+    "name": "Celo Alfajores Testnet",
+    "rpcUrl": "https://alfajores-forno.celo-testnet.org",
+    "chainId": 44787,
+    "explorer": "https://alfajores.celoscan.io",
+    "faucet": "https://faucet.celo.org/alfajores"
+  }
+}

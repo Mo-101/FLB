@@ -2,16 +2,14 @@
 
 **FlameBornToken** is an upgradeable ERC20 token deployed on the Celo blockchain, empowering digital sovereignty and decentralized innovation.
 
----
+
 
 ## 🌍 Live Deployments
 
-### ✅ FlameBornToken (ERC20)
+### 📋 Deployment Tracking
 
-* **Proxy Address**: `0xd1b6883205eF7021723334D4ec0dc68D0D156b2a`
-* **Implementation Address**: `0x1C6924E0a6Ae373A9b52cbFF66075A72c1B97502`
-* **Explorer**: [View on Celoscan](https://alfajores.celoscan.io/address/0xd1b6883205eF7021723334D4ec0dc68D0D156b2a)
-* **Deployer**: `0x2E75287C542B9b111906D961d58f2617059dDe3c`
+* **🔗 Unified Deployments**: [Complete Deployment Info](deployments/unified-deployments.json) - All contracts in one file
+* **📖 OpenZeppelin Upgrades**: [Full History](.openzeppelin/celo-alfajores.json) - Upgrade tracking
 
 ### 🏥 FlameBornHealthIDNFT (FLB-HNFT)
 
@@ -23,12 +21,12 @@
 ### 🔥 FlameBornEngine (FLB-E)
 
 * **Proxy Address**: `0x82cA6C5FE9d7E834D908a2482aB76A51D64f5BB4`
-* **Implementation Address**: `0xE8CEb669437E93208D605dE18433E46297F21cb1`
+* **Implementation Address**: `0x82cA6C5FE9d7E834D908a2482aB76A51D64f5BB4`
 * **Explorer**: [View on Celoscan](https://alfajores.celoscan.io/address/0x82cA6C5FE9d7E834D908a2482aB76A51D64f5BB4)
 * **Tag**: `FLB-EN`
 * **Linked Contracts**:
-  * **FLB Token**: `0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1`
-  * **HealthIDNFT**: `0x1566c75a1Bad93a9fa5E2Da690395987E36e08e8`
+  * **FLB Token**: `0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1` ✅ **ACTIVE**
+  * **FlameBornHealthIDNFT**: `0x1566c75a1Bad93a9fa5E2Da690395987E36e08e8`
 * **Features**:
   * Role-driven interaction logic
   * Learn-to-Earn & Donation mechanics
@@ -36,11 +34,18 @@
 
 ---
 
+## 📋 Deployment Tracking
+
+* **🔗 Unified Deployments**: [Complete Deployment Info](deployments/unified-deployments.json) - All contracts in one file
+* **📖 OpenZeppelin Upgrades**: [Full History](.openzeppelin/celo-alfajores.json) - Upgrade tracking
+
+---
+
 ## ✅ Verification Status
 
-* FlameBornToken implementation [verified on Celoscan](https://alfajores.celoscan.io/address/0x1C6924E0a6Ae373A9b52cbFF66075A72c1B97502#code)
+* FlameBornToken implementation [verified on Celoscan](https://alfajores.celoscan.io/address/0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1#code)
 * FlameBornHealthIDNFT [verified on Celoscan](https://alfajores.celoscan.io/address/0x1566c75a1Bad93a9fa5E2Da690395987E36e08e8#code)
-* FlameBornEngine implementation [verified on Celoscan](https://alfajores.celoscan.io/address/0xE8CEb669437E93208D605dE18433E46297F21cb1#code)
+* FlameBornEngine implementation [verified on Celoscan](https://alfajores.celoscan.io/address/0x82cA6C5FE9d7E834D908a2482aB76A51D64f5BB4#code)
 * Proxy contracts are linked to their implementations.
 
 ---
@@ -96,7 +101,7 @@ npx hardhat run scripts/deploy_engine_celo.ts --network alfajores
 ### Verify on Celoscan
 
 ```sh
-npx hardhat verify --network alfajores 0xfF4ea30aC26665B687e023375c6f8AD929cC8788
+npx hardhat verify --network alfajores 0x1566c75a1Bad93a9fa5E2Da690395987E36e08e8
 ```
 
 ### Test Engine Functionality
@@ -128,7 +133,7 @@ npx hardhat verify --network alfajores 0xfF4ea30aC26665B687e023375c6f8AD929cC878
 * 🪪 EIP-2612 permit support
 * 🔐 OpenZeppelin audited contracts
 
-### 🏥 HealthIDNFT (HID)
+### 🏥 FlameBornHealthIDNFT (HID)
 
 * 🧾 Soulbound (non-transferable)
 * 🛡️ Role-based minting and access
@@ -177,7 +182,7 @@ npx hardhat test
 npx hardhat run scripts/deploy_flameborn_celo.ts --network alfajores
 
 # Deploy HealthIDNFT
-npx hardhat run scripts/deploy_healthidnft_celo.ts --network alfajores
+npx hardhat run scripts/deploy_FlameBornHealthIDNFT_celo.ts --network alfajores
 
 # Deploy FlameBornEngine
 npx hardhat run scripts/deploy_engine_celo.ts --network alfajores
@@ -200,11 +205,11 @@ npx hardhat verify --network alfajores <CONTRACT_ADDRESS>
 FLB/
 ├── contracts/
 │   ├── FlameBornToken.sol
-│   ├── HealthIDNFT.sol
+│   ├── FlameBornHealthIDNFT.sol
 │   ├── FlameBornEngine.sol
 ├── scripts/
 │   ├── deploy_flameborn_celo.ts
-│   ├── deploy_healthidnft_celo.ts
+│   ├── deploy_FlameBornHealthIDNFT_celo.ts
 │   ├── deploy_engine_celo.ts
 │   └── verify_deployment.ts
 ├── test/

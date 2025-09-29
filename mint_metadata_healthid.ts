@@ -13,7 +13,7 @@ async function main() {
       process.exit(1);
   }
 
-  console.log("🚀 Starting HealthIDNFT minting process...");
+  console.log("🚀 Starting FlameBornHealthIDNFT minting process...");
   console.log("   - Contract Address:", contractAddress);
   console.log("   - Recipient Address:", recipientAddress);
   console.log("   - Metadata URI:", metadataURI);
@@ -22,11 +22,11 @@ async function main() {
   console.log("   - Using Minter Account:", minter.address);
 
   try {
-    const HealthIDNFT = await (ethers as any).getContractFactory("HealthIDNFT");
-    const healthIDNFT = HealthIDNFT.attach(contractAddress) as any;
+    const FlameBornHealthIDNFT = await (ethers as any).getContractFactory("FlameBornHealthIDNFT");
+    const FlameBornHealthIDNFT = FlameBornHealthIDNFT.attach(contractAddress) as any;
 
     // Check if the signer has the MINTER_ROLE
-    const MINTER_ROLE = await healthIDNFT.MINTER_ROLE();
+    const MINTER_ROLE = await FlameBornHealthIDNFT.MINTER_ROLE();
 
   } catch (error) {
     console.error("💥 Fatal error:", error);

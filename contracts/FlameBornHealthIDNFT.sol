@@ -26,12 +26,12 @@ contract FlameBornHealthIDNFT is ERC721URIStorage, AccessControl {
     error ZeroAddress();
 
     // Events
-    event HealthIDMinted(
+    event FlameBornHealthIDNFTMinted(
         address indexed to,
         uint256 indexed tokenId,
         string metadataURI
     );
-    event HealthIDMetadataUpdated(
+    event FlameBornHealthIDNFTMetadataUpdated(
         uint256 indexed tokenId,
         string newMetadataURI
     );
@@ -91,7 +91,7 @@ contract FlameBornHealthIDNFT is ERC721URIStorage, AccessControl {
 
         _mint(to, tokenId);
 
-        emit HealthIDMinted(to, tokenId, "");
+        emit FlameBornHealthIDNFTMinted(to, tokenId, "");
         return tokenId;
     }
 
@@ -113,7 +113,7 @@ contract FlameBornHealthIDNFT is ERC721URIStorage, AccessControl {
         _mint(to, tokenId);
         _setTokenURI(tokenId, metadataURI);
 
-        emit HealthIDMinted(to, tokenId, metadataURI);
+        emit FlameBornHealthIDNFTMinted(to, tokenId, metadataURI);
         return tokenId;
     }
 
@@ -129,7 +129,7 @@ contract FlameBornHealthIDNFT is ERC721URIStorage, AccessControl {
         if (_ownerOf(tokenId) == address(0)) revert InvalidTokenId();
 
         _setTokenURI(tokenId, metadataURI);
-        emit HealthIDMetadataUpdated(tokenId, metadataURI);
+        emit FlameBornHealthIDNFTMetadataUpdated(tokenId, metadataURI);
     }
 
     /**

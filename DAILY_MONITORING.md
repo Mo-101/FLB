@@ -3,7 +3,7 @@
 ## ⏰ Daily Security Checklist (5 minutes)
 
 ### 🔹 Contract Integrity Check
-- [ ] **Implementation Address**: Verify proxy still points to `0x1C6924E0a6Ae373A9b52cbFF66075A72c1B97502`
+- [ ] **Implementation Address**: Verify proxy still points to `0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1`
 - [ ] **Proxy Status**: Confirm proxy at `0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1` is active
 - [ ] **Verification Status**: Check CeloScan shows "Verified" badge
 - [ ] **Contract State**: Ensure token is not paused unexpectedly
@@ -80,7 +80,7 @@ Guardian: [GUARDIAN_NAME]
 const MONITORING_CONFIG = {
   contracts: {
     proxy: "0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1",
-    implementation: "0x1C6924E0a6Ae373A9b52cbFF66075A72c1B97502"
+    implementation: "0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1"
   },
   alerts: {
     implementationChange: true,
@@ -192,7 +192,7 @@ Review Date: [DATE]
 
 **⚡ Quick Links**
 - [Proxy Contract](https://alfajores.celoscan.io/address/0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1)
-- [Implementation](https://alfajores.celoscan.io/address/0x1C6924E0a6Ae373A9b52cbFF66075A72c1B97502#code)
+- [Implementation](https://alfajores.celoscan.io/address/0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1#code)
 - [Token Page](https://alfajores.celoscan.io/token/0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1)
 - [GitHub Repo](https://github.com/FlameBorn-1/FLB)
 

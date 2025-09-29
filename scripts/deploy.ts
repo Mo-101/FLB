@@ -3,6 +3,8 @@ import { ethers, upgrades } from "hardhat";
 async function main() {
   console.log("🚀 Starting deployment script");
   
+  const TOKEN_ADDRESS = "0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1";
+
   // Get the deployer account
   const [deployer] = await ethers.getSigners();
   console.log("Deploying contracts with the account:", deployer.address);
@@ -23,19 +25,17 @@ async function main() {
     console.log("\n2. Deploying FlameBornEngine...");
     const FlameBornEngine = await ethers.getContractFactory("FlameBornEngine");
     
-    // Deploy the proxy contract
     const engine = await upgrades.deployProxy(
       FlameBornEngine,
       [
         deployer.address, // admin
-        "0xd1b6883205eF7021723334D4ec0dc68D0D156b2a", // FLB token
+        TOKEN_ADDRESS, // FLB token
         "0x115aA20101bd0F95516Cc67ea104eD0B0c642919", // HealthIDNFT
         ethers.parseUnits("100", 18), // actorReward (100 FLB)
         100 // donationRewardRate (100 FLB per ETH)
       ],
       { initializer: 'initialize', kind: 'uups' }
     );
-    
     await engine.waitForDeployment();
     const address = await engine.getAddress();
     

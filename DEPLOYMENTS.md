@@ -4,7 +4,7 @@ This file tracks all deployments of the Kairo Covenant AI System contracts acros
 
 ## ✅ Active Deployments
 
-### HealthIDNFT v1.0 - Celo Alfajores Testnet
+### FlameBornHealthIDNFT v1.0 - Celo Alfajores Testnet
 
 **Deployment Date**: July 28, 2025
 **Status**: ✅ Active & Verified
@@ -12,13 +12,13 @@ This file tracks all deployments of the Kairo Covenant AI System contracts acros
 
 #### Contract Addresses
 
-- **🏷️ Contract Address**: `0x115aA20101bd0F95516Cc67ea104eD0B0c642919`
+- **🏷️ Contract Address**: `0x1566c75a1Bad93a9fa5E2Da690395987E36e08e8`
 - **👤 Admin**: `0x2E75287C542B9b111906D961d58f2617059dDe3c`
 
 #### Token Details
 
-- **Name**: HealthIDNFT
-- **Symbol**: HID
+- **Name**: FlameBornHealthIDNFT
+- **Symbol**:FLB-HNFT
 - **Type**: Soulbound ERC721 (Non-transferable)
 
 #### Features
@@ -30,8 +30,6 @@ This file tracks all deployments of the Kairo Covenant AI System contracts acros
 
 ---
 
-## ✅ Active Deployments
-
 ### FlameBornToken v1.0 - Celo Alfajores Testnet
 
 **Deployment Date**: July 28, 2025  
@@ -40,8 +38,8 @@ This file tracks all deployments of the Kairo Covenant AI System contracts acros
 
 #### Contract Addresses
 
-- **🏷️ Proxy Address**: `0xd1b6883205eF7021723334D4ec0dc68D0D156b2a`
-- **🧠 Implementation**: `0x1C6924E0a6Ae373A9b52cbFF66075A72c1B97502`
+- **🏷️ Proxy Address**: `0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1`
+- **🧠 Implementation**: `0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1`
 - **👤 Owner**: `0x2E75287C542B9b111906D961d58f2617059dDe3c`
 
 #### Token Details
@@ -65,7 +63,7 @@ This file tracks all deployments of the Kairo Covenant AI System contracts acros
 
 - **Contract Verified**: ✅ Yes
 - **Source Code**: Available on Celoscan
-- **Explorer**: [View on Celoscan](https://alfajores.celoscan.io/address/0xd1b6883205eF7021723334D4ec0dc68D0D156b2a)
+- **Explorer**: [View on Celoscan](https://alfajores.celoscan.io/address/0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1)
 
 #### Deployment Configuration
 
@@ -122,7 +120,7 @@ npx hardhat verify --network alfajores <IMPLEMENTATION_ADDRESS>
 
 - **Date**: January 28, 2025
 - **Changes**: Initial deployment
-- **Implementation**: `0x1C6924E0a6Ae373A9b52cbFF66075A72c1B97502`
+- **Implementation**: `0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1`
 - **Features**: Full ERC20 with burn, pause, permit, and upgrade capabilities
 
 ---

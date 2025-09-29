@@ -28,7 +28,7 @@ async function main() {
     console.log("\n3. Deploying contract...");
     const args = [
       deployer.address, // admin
-      "0xd1b6883205eF7021723334D4ec0dc68D0D156b2a", // FLB token
+      "0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1", // FLB token
       "0x115aA20101bd0F95516Cc67ea104eD0B0c642919", // HealthIDNFT
       ethers.parseUnits("100", 18), // actorReward (100 FLB)
       100 // donationRewardRate (100 FLB per ETH)
