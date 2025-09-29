@@ -169,5 +169,15 @@ contract FlameBornEngine is Initializable, UUPSUpgradeable, AccessControlUpgrade
         return ENGINE_TAG;
     }
 
+    /// @notice Returns the name of the contract
+    function name() external pure returns (string memory) {
+        return "FlameBornEngine";
+    }
+
+    /// @notice Returns the symbol/ticker of the contract
+    function symbol() external pure returns (string memory) {
+        return "FLB-EN";
+    }
+
     function _authorizeUpgrade(address) internal override onlyRole(DEFAULT_ADMIN_ROLE) {}
 }

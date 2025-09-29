@@ -7,6 +7,7 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 
 // Access control
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
 
 // ERC20 core and extensions
 import "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
@@ -20,9 +21,14 @@ contract FlameBornToken is
     ERC20BurnableUpgradeable,
     ERC20PausableUpgradeable,
     OwnableUpgradeable,
+    AccessControlUpgradeable,
     ERC20PermitUpgradeable,
     UUPSUpgradeable
 {
+    /**
+     * @dev MINTER_ROLE allows addresses to mint new tokens
+     */
+    bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     /**
      * @custom:oz-upgrades-unsafe-allow constructor
      * @custom:dev-run-script scripts/deploy_with_ethers.ts
@@ -48,8 +54,13 @@ contract FlameBornToken is
         __ERC20Burnable_init();
         __ERC20Pausable_init();
         __Ownable_init(initialOwner);
+        __AccessControl_init();
         __ERC20Permit_init("FlameBornToken");
         __UUPSUpgradeable_init();
+        
+        // Grant roles to initial owner
+        _grantRole(DEFAULT_ADMIN_ROLE, initialOwner);
+        _grantRole(MINTER_ROLE, initialOwner);
         
         // Mint initial supply to the initial owner
         _mint(initialOwner, _INITIAL_SUPPLY);
@@ -63,7 +74,8 @@ contract FlameBornToken is
         _unpause();
     }
 
-    function mint(address to, uint256 amount) public onlyOwner {
+    function mint(address to, uint256 amount) public {
+        require(hasRole(MINTER_ROLE, msg.sender) || owner() == msg.sender, "Caller is not authorized to mint");
         _mint(to, amount);
     }
 

@@ -1,8 +1,9 @@
 # 🔍 FlameBornToken (FLB) - Contract Provenance & Verification
 
-**Generated**: 2025-09-29T05:34:13+03:00  
+**Generated**: 2025-09-29T05:49:13+03:00  
 **Commit Hash**: `96fbf6c7507169cb1ee358010d2af224cce04330`  
 **Network**: Celo Alfajores Testnet (Chain ID: 44787)
+**Status**: ✅ **LIVE & VERIFIED** - All contracts deployed and functional
 
 ---
 
@@ -11,7 +12,7 @@
 ### FlameBornToken (ERC20 Upgradeable)
 
 - **Proxy Address**: `0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1` ✅ **CANONICAL**
-- **Implementation Address**: `0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1`
+- **Implementation Address**: `0x1C6924E0a6Ae373A9b52cbFF66075A72c1B97502` ✅ **CANONICAL**
 - **Deployer**: `0x2E75287C542B9b111906D961d58f2617059dDe3c`
 
 ### FlameBornHealthIDNFT (ERC721 Soulbound)
@@ -22,7 +23,7 @@
 ### FlameBornEngine (UUPS Upgradeable)
 
 - **Proxy Address**: `0x82cA6C5FE9d7E834D908a2482aB76A51D64f5BB4` ✅ **CANONICAL**
-- **Implementation Address**: `0x82cA6C5FE9d7E834D908a2482aB76A51D64f5BB4`
+- **Implementation Address**: `0xE8CEb669437E93208D605dE18433E46297F21cb1` ✅ **CANONICAL**
 - **Deployer**: `0x2E75287C542B9b111906D961d58f2617059dDe3c`
 
 ---
@@ -31,13 +32,13 @@
 
 ```bash
 # Verify FlameBornToken implementation
-npx hardhat verify --network alfajores 0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1
+npx hardhat verify --network alfajores 0x1C6924E0a6Ae373A9b52cbFF66075A72c1B97502
 
 # Verify FlameBornHealthIDNFT
 npx hardhat verify --network alfajores 0x1566c75a1Bad93a9fa5E2Da690395987E36e08e8
 
 # Verify FlameBornEngine implementation
-npx hardhat verify --network alfajores 0x82cA6C5FE9d7E834D908a2482aB76A51D64f5BB4
+npx hardhat verify --network alfajores 0xE8CEb669437E93208D605dE18433E46297F21cb1
 
 # Run all verifications
 npx hardhat run scripts/verify_all.ts --network alfajores

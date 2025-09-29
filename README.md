@@ -2,51 +2,38 @@
 
 **FlameBornToken** is an upgradeable ERC20 token deployed on the Celo blockchain, empowering digital sovereignty and decentralized innovation.
 
-
-
 ## 🌍 Live Deployments
 
-### 📋 Deployment Tracking
+### 📋 Canonical Contract Addresses
 
-* **🔗 Unified Deployments**: [Complete Deployment Info](deployments/unified-deployments.json) - All contracts in one file
-* **📖 OpenZeppelin Upgrades**: [Full History](.openzeppelin/celo-alfajores.json) - Upgrade tracking
+#### 🔥 FlameBornToken (FLB)
+- **Proxy Address**: `0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1` ✅ **CANONICAL**
+- **Implementation Address**: `0x1C6924E0a6Ae373A9b52cbFF66075A72c1B97502` ✅ **CANONICAL**
+- **Explorer**: [View on Celoscan](https://alfajores.celoscan.io/token/0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1)
+- **Type**: Upgradeable ERC20 with Role-Based Access Control
 
-### 🏥 FlameBornHealthIDNFT (FLB-HNFT)
+#### 🏥 FlameBornHealthIDNFT (FLB-HNFT)
+- **Contract Address**: `0x1566c75a1Bad93a9fa5E2Da690395987E36e08e8` ✅ **CANONICAL**
+- **Explorer**: [View on Celoscan](https://alfajores.celoscan.io/token/0x1566c75a1Bad93a9fa5E2Da690395987E36e08e8)
+- **Type**: Soulbound NFT with Role-Based Access Control
 
-* **Contract Address**: `0x1566c75a1Bad93a9fa5E2Da690395987E36e08e8`
-* **Explorer**: [View on Celoscan](https://alfajores.celoscan.io/address/0x1566c75a1Bad93a9fa5E2Da690395987E36e08e8)
-* **Type**: Soulbound NFT with Role-Based Access Control
-* **Features**: Non-transferable, Auto-Increment Token IDs, Metadata URI, Minter/Admin roles
-
-### 🔥 FlameBornEngine (FLB-E)
-
-* **Proxy Address**: `0x82cA6C5FE9d7E834D908a2482aB76A51D64f5BB4`
-* **Implementation Address**: `0x82cA6C5FE9d7E834D908a2482aB76A51D64f5BB4`
-* **Explorer**: [View on Celoscan](https://alfajores.celoscan.io/address/0x82cA6C5FE9d7E834D908a2482aB76A51D64f5BB4)
-* **Tag**: `FLB-EN`
-* **Linked Contracts**:
-  * **FLB Token**: `0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1` ✅ **ACTIVE**
-  * **FlameBornHealthIDNFT**: `0x1566c75a1Bad93a9fa5E2Da690395987E36e08e8`
-* **Features**:
-  * Role-driven interaction logic
-  * Learn-to-Earn & Donation mechanics
-  * Modular controller engine
-
----
-
-## 📋 Deployment Tracking
-
-* **🔗 Unified Deployments**: [Complete Deployment Info](deployments/unified-deployments.json) - All contracts in one file
-* **📖 OpenZeppelin Upgrades**: [Full History](.openzeppelin/celo-alfajores.json) - Upgrade tracking
+#### ⚙️ FlameBornEngine (FLB-EN)
+- **Proxy Address**: `0x82cA6C5FE9d7E834D908a2482aB76A51D64f5BB4` ✅ **CANONICAL**
+- **Implementation Address**: `0xE8CEb669437E93208D605dE18433E46297F21cb1` ✅ **CANONICAL**
+- **Explorer**: [View on Celoscan](https://alfajores.celoscan.io/address/0x82cA6C5FE9d7E834D908a2482aB76A51D64f5BB4)
+- **Type**: UUPS Upgradeable Learn-to-Earn Engine
 
 ---
 
 ## ✅ Verification Status
 
-* FlameBornToken implementation [verified on Celoscan](https://alfajores.celoscan.io/address/0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1#code)
-* FlameBornHealthIDNFT [verified on Celoscan](https://alfajores.celoscan.io/address/0x1566c75a1Bad93a9fa5E2Da690395987E36e08e8#code)
-* FlameBornEngine implementation [verified on Celoscan](https://alfajores.celoscan.io/address/0x82cA6C5FE9d7E834D908a2482aB76A51D64f5BB4#code)
-* Proxy contracts are linked to their implementations.
+* ✅ FlameBornToken implementation [verified on Celoscan](https://alfajores.celoscan.io/address/0x1C6924E0a6Ae373A9b52cbFF66075A72c1B97502#code)
+* ✅ FlameBornHealthIDNFT [verified on Celoscan](https://alfajores.celoscan.io/address/0x1566c75a1Bad93a9fa5E2Da690395987E36e08e8#code)
+* ✅ FlameBornEngine implementation [verified on Celoscan](https://alfajores.celoscan.io/address/0xE8CEb669437E93208D605dE18433E46297F21cb1#code)
+* ✅ Proxy contracts are linked to their implementations
+* ✅ Full provenance documentation: [PROVENANCE.md](PROVENANCE.md)
+
+---
 
 ---
 
@@ -120,7 +107,7 @@ npx hardhat verify --network alfajores 0x1566c75a1Bad93a9fa5E2Da690395987E36e08e
 | **Decimals** | 18                                  |
 | **Supply**   | 1,000,000 FLB                       |
 | **Standard** | Upgradeable ERC20                   |
-| **Access**   | Ownable, Pausable, Burnable, Permit |
+| **Access**   | Ownable + MINTER_ROLE               |
 
 ---
 
@@ -177,46 +164,62 @@ npx hardhat test
 
 ## 📋 Deployment Commands
 
+### 🚀 Orchestrated Deployment (Recommended)
+
+Deploy all contracts in the correct order with automatic dependency management:
+
 ```bash
-# Deploy Token
-npx hardhat run scripts/deploy_flameborn_celo.ts --network alfajores
+# Deploy all contracts (Token → NFT → Engine)
+npx hardhat run scripts/deploy_all.ts --network alfajores
+```
 
-# Deploy HealthIDNFT
-npx hardhat run scripts/deploy_FlameBornHealthIDNFT_celo.ts --network alfajores
+### 🛠️ Individual Deployments
 
-# Deploy FlameBornEngine
-npx hardhat run scripts/deploy_engine_celo.ts --network alfajores
+```bash
+# Deploy individual contracts
+npx hardhat run scripts/deploy_token.ts --network alfajores
+npx hardhat run scripts/deploy_healthidnft.ts --network alfajores
+npx hardhat run scripts/deploy_engine.ts --network alfajores
+```
+
+### 🔍 Verification & Testing
+
+```bash
+# Verify all contract source code on CeloScan
+npx hardhat run scripts/verify_all.ts --network alfajores
+
+# Run functional verification tests
+npx hardhat run scripts/verify_deployment.ts --network alfajores
+
+# Run full test suite
+npx hardhat test
 ```
 
 ---
 
-## 🛠️ Script Utilities
+## 🧬 Project Structure
 
-```bash
-# Verify a deployed contract
-npx hardhat verify --network alfajores <CONTRACT_ADDRESS>
 ```
-
----
-
-## 🧬 Contract Layout
-
-```bash
 FLB/
 ├── contracts/
-│   ├── FlameBornToken.sol
-│   ├── FlameBornHealthIDNFT.sol
-│   ├── FlameBornEngine.sol
+│   ├── FlameBornToken.sol         # Upgradeable ERC20 with MINTER_ROLE
+│   ├── FlameBornHealthIDNFT.sol   # Soulbound NFT with role-based access
+│   └── FlameBornEngine.sol        # Learn-to-Earn engine with name/symbol
 ├── scripts/
-│   ├── deploy_flameborn_celo.ts
-│   ├── deploy_FlameBornHealthIDNFT_celo.ts
-│   ├── deploy_engine_celo.ts
-│   └── verify_deployment.ts
-├── test/
-├── .env.example
-├── hardhat.config.ts
-└── DEPLOYMENT_GUIDE.md
-``` bash
+│   ├── deploy_all.ts              # 🎼 Orchestrator - deploys all contracts
+│   ├── deploy_token.ts            # Deploy FlameBornToken
+│   ├── deploy_healthidnft.ts      # Deploy HealthIDNFT
+│   ├── deploy_engine.ts           # Deploy FlameBornEngine
+│   ├── verify_all.ts              # Source code verification
+│   └── verify_deployment.ts       # Functional verification
+├── utils/
+│   └── deployHelper.ts            # 📦 Deployment state management
+├── deployments/
+│   └── addresses.json             # 📝 Canonical address registry
+├── test/                          # Comprehensive test suite
+├── PROVENANCE.md                  # 🔍 Contract provenance & verification
+└── LAUNCH_ANNOUNCEMENT.md         # 📢 Community launch materials
+```
 
 ---
 

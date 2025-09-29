@@ -2887,9 +2887,9 @@
       "contracts/FlameBornEngine.sol:FlameBornEngine": {
         "src": "contracts\\FlameBornEngine.sol:20",
         "version": {
-          "withMetadata": "ebd8df0546acaa89baef119a49bc3f66fbcc9d2b7a94a7a1a5656bfd33325b29",
-          "withoutMetadata": "e1f419cdd336745caee533c3cafe481148c26aa175a50906eb620827c7434d2f",
-          "linkedWithoutMetadata": "e1f419cdd336745caee533c3cafe481148c26aa175a50906eb620827c7434d2f"
+          "withMetadata": "5994e4fb75303976d052c698d7b7c71d7a2e01748f5820efb0dc907b00093ae0",
+          "withoutMetadata": "d1d2ef6f88c0a25c365d5001fc1516863c19c88220f2b8a1307c9448c32346ac",
+          "linkedWithoutMetadata": "d1d2ef6f88c0a25c365d5001fc1516863c19c88220f2b8a1307c9448c32346ac"
         },
         "inherit": [
           "@openzeppelin/contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol:ReentrancyGuardUpgradeable",
@@ -2913,7 +2913,9 @@
           "isVerifiedActor(address)",
           "getActor(address)",
           "tokenURIForActor(string)",
-          "engineTag()"
+          "engineTag()",
+          "name()",
+          "symbol()"
         ],
         "linkReferences": [],
         "errors": [],
@@ -3410,11 +3412,11 @@
         "solcVersion": "0.8.28"
       },
       "contracts/FlameBornToken.sol:FlameBornToken": {
-        "src": "contracts\\FlameBornToken.sol:17",
+        "src": "contracts\\FlameBornToken.sol:18",
         "version": {
-          "withMetadata": "91c8446a531476dfc634211bf8630ff108b6db2e705aa3349218ac2e3ab9d433",
-          "withoutMetadata": "d3cc79ea4eb970f5e97964345fd382c19aeec5e0f4e58d84733c2a1842b62968",
-          "linkedWithoutMetadata": "d3cc79ea4eb970f5e97964345fd382c19aeec5e0f4e58d84733c2a1842b62968"
+          "withMetadata": "79f42a177e9b03c0687fdb2a501bfc72b86d7245ffa72579d0a2d107b87e619c",
+          "withoutMetadata": "772ed5de3290bbee076e516d524e07f26e289e73cb3ee620e6c8da28cb163f66",
+          "linkedWithoutMetadata": "772ed5de3290bbee076e516d524e07f26e289e73cb3ee620e6c8da28cb163f66"
         },
         "inherit": [
           "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol:UUPSUpgradeable",
@@ -3424,6 +3426,10 @@
           "@openzeppelin/contracts-upgradeable/utils/cryptography/EIP712Upgradeable.sol:EIP712Upgradeable",
           "@openzeppelin/contracts/interfaces/IERC5267.sol:IERC5267",
           "@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol:IERC20Permit",
+          "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol:AccessControlUpgradeable",
+          "@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol:ERC165Upgradeable",
+          "@openzeppelin/contracts/utils/introspection/IERC165.sol:IERC165",
+          "@openzeppelin/contracts/access/IAccessControl.sol:IAccessControl",
           "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:OwnableUpgradeable",
           "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/ERC20PausableUpgradeable.sol:ERC20PausableUpgradeable",
           "@openzeppelin/contracts-upgradeable/utils/PausableUpgradeable.sol:PausableUpgradeable",
@@ -3460,6 +3466,10 @@
               "label": "bytes32",
               "numberOfBytes": "32"
             },
+            "t_mapping(t_address,t_bool)": {
+              "label": "mapping(address => bool)",
+              "numberOfBytes": "32"
+            },
             "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
               "label": "mapping(address => mapping(address => uint256))",
               "numberOfBytes": "32"
@@ -3468,8 +3478,24 @@
               "label": "mapping(address => uint256)",
               "numberOfBytes": "32"
             },
+            "t_mapping(t_bytes32,t_struct(RoleData)26_storage)": {
+              "label": "mapping(bytes32 => struct AccessControlUpgradeable.RoleData)",
+              "numberOfBytes": "32"
+            },
             "t_string_storage": {
               "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(AccessControlStorage)36_storage": {
+              "label": "struct AccessControlUpgradeable.AccessControlStorage",
+              "members": [
+                {
+                  "label": "_roles",
+                  "type": "t_mapping(t_bytes32,t_struct(RoleData)26_storage)",
+                  "offset": 0,
+                  "slot": "0"
+                }
+              ],
               "numberOfBytes": "32"
             },
             "t_struct(EIP712Storage)878_storage": {
@@ -3592,6 +3618,24 @@
               ],
               "numberOfBytes": "32"
             },
+            "t_struct(RoleData)26_storage": {
+              "label": "struct AccessControlUpgradeable.RoleData",
+              "members": [
+                {
+                  "label": "hasRole",
+                  "type": "t_mapping(t_address,t_bool)",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "adminRole",
+                  "type": "t_bytes32",
+                  "offset": 0,
+                  "slot": "1"
+                }
+              ],
+              "numberOfBytes": "64"
+            },
             "t_uint256": {
               "label": "uint256",
               "numberOfBytes": "32"
@@ -3646,6 +3690,16 @@
                 "src": "@openzeppelin\\contracts-upgradeable\\utils\\cryptography\\EIP712Upgradeable.sol:43",
                 "offset": 0,
                 "slot": "3"
+              }
+            ],
+            "erc7201:openzeppelin.storage.AccessControl": [
+              {
+                "contract": "AccessControlUpgradeable",
+                "label": "_roles",
+                "type": "t_mapping(t_bytes32,t_struct(RoleData)26_storage)",
+                "src": "@openzeppelin\\contracts-upgradeable\\access\\AccessControlUpgradeable.sol:62",
+                "offset": 0,
+                "slot": "0"
               }
             ],
             "erc7201:openzeppelin.storage.Ownable": [
@@ -3936,13 +3990,13 @@
               "label": "engine",
               "offset": 0,
               "slot": "0",
-              "type": "t_contract(IFlameBornEngine)12753",
+              "type": "t_contract(IFlameBornEngine)12806",
               "contract": "ReentrancyAttacker",
               "src": "contracts\\test\\ReentrancyAttacker.sol:9"
             }
           ],
           "types": {
-            "t_contract(IFlameBornEngine)12753": {
+            "t_contract(IFlameBornEngine)12806": {
               "label": "contract IFlameBornEngine",
               "numberOfBytes": "20"
             }
