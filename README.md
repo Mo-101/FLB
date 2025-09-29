@@ -8,9 +8,9 @@
 
 ### ✅ FlameBornToken (ERC20)
 
-* **Proxy Address**: `0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1`
+* **Proxy Address**: `0xd1b6883205eF7021723334D4ec0dc68D0D156b2a`
 * **Implementation Address**: `0x1C6924E0a6Ae373A9b52cbFF66075A72c1B97502`
-* **Explorer**: [View on Celoscan](https://alfajores.celoscan.io/address/0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1)
+* **Explorer**: [View on Celoscan](https://alfajores.celoscan.io/address/0xd1b6883205eF7021723334D4ec0dc68D0D156b2a)
 * **Deployer**: `0x2E75287C542B9b111906D961d58f2617059dDe3c`
 
 ### 🏥 FlameBornHealthIDNFT (FLB-HNFT)
@@ -31,13 +31,10 @@
   * **HealthIDNFT**: `0x1566c75a1Bad93a9fa5E2Da690395987E36e08e8`
 * **Features**:
   * Role-driven interaction logic
-  * Reward distribution (FLB)
   * Learn-to-Earn & Donation mechanics
   * Modular controller engine
 
 ---
-
-
 
 ## ✅ Verification Status
 
@@ -293,3 +290,24 @@ See [LICENSE](LICENSE) for details.
 ---
 
 *"When the LION learns to CODE, the HUNTER's story ends."* 🦁
+
+---
+
+## 🔍 Contract Verification & Provenance Steps
+
+| Step | I can do for you | You do |
+|------|------------------|--------|
+| 1 | Reconstruct the full 14-file source bundle from the fragments you sent and confirm filenames match CeloScan. | Confirm the proxy address is `0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1` (the token page) or paste the proxy creation TX. |
+| 2 | Read the proxy IMPLEMENTATION_SLOT, locate the implementation address, and fetch its explorer Code tab. | If you see the implementation URL or creation TX on CeloScan, paste it here. |
+| 3 | Extract proxy and implementation creation TX hashes and decode constructor/init calldata (report decoded params). | Copy the creation TX hashes from CeloScan if needed and paste them here. |
+| 4 | Verify the implementation's Code tab (compiler, optimization, EVM) and compare deployed bytecode to the compiled bytecode from the source you provided. | Paste the GitHub commit hash you want tied to this verification (the exact commit containing the 14-file source set). |
+| 5 | Inspect ProxyAdmin ownership, report whether it is a multisig or single EOA, and list signers if available. | If ProxyAdmin is a multisig you control, paste the multisig dashboard link or signer addresses and threshold. |
+| 6 | Produce a filled PROVENANCE.md with creation TXs, implementation address, compiler info, bytecode match result, ProxyAdmin details, and timestamp. | Push PROVENANCE.md to the repo and paste the commit URL here so I can embed it in the pinned follow-up. |
+| 7 | Draft the thread-ready announcement + pinned follow-up tweet with exact links and the one-line risk caveat. | Post the announcement thread and pin the follow-up once PROVENANCE.md is live. |
+| 8 | Create a short daily-check checklist and an alert template for monitoring upgrades or impersonation. | Assign a guardian or teammate to run the daily check or wire the alert webhook. |
+
+### **Bold immediate action (one line)**
+
+Paste the proxy creation TX or confirm the proxy address and paste the GitHub commit hash you want tied to verification; I'll finish steps 2–6 and return PROVENANCE.md plus pinned-thread copy-ready text.
+
+
