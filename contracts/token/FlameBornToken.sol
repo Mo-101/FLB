@@ -26,17 +26,9 @@ contract FlameBornToken is
     UUPSUpgradeable
 {
     /**
-     * @dev MINTER_ROLE allows addresses to mint new tokens
+     * @dev MINTER_ROLE allows covenantal contracts to mint new tokens
      */
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
-    /**
-     * @custom:oz-upgrades-unsafe-allow constructor
-     * @custom:dev-run-script scripts/deploy_with_ethers.ts
-     * @custom:dev-doc https://docs.openzeppelin.com/contracts/4.x/erc20
-     * @dev Token decimals and initial supply constants
-     */
-    uint8 private constant _DECIMALS = 18;
-    uint256 private constant _INITIAL_SUPPLY = 1000000 * (10 ** _DECIMALS);
 
     /**
      * @custom:oz-upgrades-unsafe-allow constructor
@@ -46,8 +38,8 @@ contract FlameBornToken is
     }
 
     /**
-     * @dev Initializes the contract with initial owner and mints initial supply
-     * @param initialOwner The address that will own the contract and receive initial supply
+     * @dev Initializes the contract with covenantal admin privileges and zero initial supply
+     * @param initialOwner The address that will own the contract for governance and role management
      */
     function initialize(address initialOwner) initializer public {
         __ERC20_init("FlameBornToken", "FLB");
@@ -58,12 +50,10 @@ contract FlameBornToken is
         __ERC20Permit_init("FlameBornToken");
         __UUPSUpgradeable_init();
         
-        // Grant roles to initial owner
+        // Grant admin role to initial owner for governance and role management
         _grantRole(DEFAULT_ADMIN_ROLE, initialOwner);
+        // Ensure governance can delegate minting without pre-minting supply
         _grantRole(MINTER_ROLE, initialOwner);
-        
-        // Mint initial supply to the initial owner
-        _mint(initialOwner, _INITIAL_SUPPLY);
     }
 
     function pause() public onlyOwner {
@@ -75,8 +65,16 @@ contract FlameBornToken is
     }
 
     function mint(address to, uint256 amount) public {
-        require(hasRole(MINTER_ROLE, msg.sender) || owner() == msg.sender, "Caller is not authorized to mint");
+        require(hasRole(MINTER_ROLE, msg.sender), "Caller is not authorized to mint");
         _mint(to, amount);
+    }
+
+    function grantMinterRole(address account) external onlyOwner {
+        _grantRole(MINTER_ROLE, account);
+    }
+
+    function revokeMinterRole(address account) external onlyOwner {
+        _revokeRole(MINTER_ROLE, account);
     }
 
     function _authorizeUpgrade(address newImplementation)

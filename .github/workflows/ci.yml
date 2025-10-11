@@ -1,35 +1,30 @@
 name: CI
 
 on:
-  push:
-    branches: [ main, develop ]
   pull_request:
+    branches: [ main ]
+  push:
     branches: [ main ]
 
 jobs:
-  test:
+  ci:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
-        cache: 'npm'
-
-    - name: Install dependencies
-      run: npm ci
-
-    - name: Compile contracts
-      run: npx hardhat compile
-
-    - name: Run tests
-      run: npx hardhat test
-
-    - name: Verify contracts (if deployed)
-      run: npx hardhat run scripts/verify_all.ts --network alfajores
-      env:
-        CELOTESTNET_API_KEY: ${{ secrets.CELOTESTNET_API_KEY }}
-      continue-on-error: true # Don't fail CI if verification fails
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Cache npm
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: npm-${{ hashFiles('package-lock.json') }}
+      - run: npm ci
+      - name: Build TS
+        run: npm run build --if-present
+      - name: Lint
+        run: npm run lint --if-present
+      - name: Test
+        run: npm test --if-present
+      - name: Solidity Coverage
+        run: npm run coverage --if-present

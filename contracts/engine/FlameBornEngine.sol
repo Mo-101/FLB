@@ -23,8 +23,9 @@ contract FlameBornEngine is Initializable, UUPSUpgradeable, AccessControlUpgrade
     bytes32 public constant REGISTRAR_ROLE = keccak256("REGISTRAR_ROLE");
     bytes32 public constant QUEST_ADMIN_ROLE = keccak256("QUEST_ADMIN_ROLE");
 
-    // UI Tag
-    string public constant ENGINE_TAG = "FLB-EN"; // UI-only marker
+    // Metadata
+    string public name;
+    string public symbol;
 
     // Actor types
     enum ActorRole {
@@ -89,6 +90,9 @@ contract FlameBornEngine is Initializable, UUPSUpgradeable, AccessControlUpgrade
         _grantRole(DEFAULT_ADMIN_ROLE, admin);
         _grantRole(REGISTRAR_ROLE, admin);
         _grantRole(QUEST_ADMIN_ROLE, admin);
+
+        name = "FlameBornEngine";
+        symbol = "FLB-EN";
     }
 
     function donate() external payable {
@@ -165,18 +169,8 @@ contract FlameBornEngine is Initializable, UUPSUpgradeable, AccessControlUpgrade
         return string(abi.encodePacked("https://example.com/metadata/", name));
     }
 
-    function engineTag() external pure returns (string memory) {
-        return ENGINE_TAG;
-    }
-
-    /// @notice Returns the name of the contract
-    function name() external pure returns (string memory) {
-        return "FlameBornEngine";
-    }
-
-    /// @notice Returns the symbol/ticker of the contract
-    function symbol() external pure returns (string memory) {
-        return "FLB-EN";
+    function version() public pure returns (string memory) {
+        return "1.1.0-genesis";
     }
 
     function _authorizeUpgrade(address) internal override onlyRole(DEFAULT_ADMIN_ROLE) {}
