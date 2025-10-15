@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "FlameBorn token ecosystem deployment and governance tooling.",
   "private": true,
+  "type": "commonjs",
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.1.0",
     "@nomicfoundation/hardhat-ethers": "^3.1.0",
@@ -36,7 +37,6 @@
     "build": "tsc --noEmit",
     "test": "hardhat test",
     "read:supply": "hardhat run scripts/read/read_total_supply.ts --network alfajores",
-    "read:balance": "hardhat run scripts/read/read_balance.ts --network alfajores",
     "gov:grant-minter": "hardhat run scripts/governance/grant_minter.ts --network alfajores",
     "gov:propose-mint": "hardhat run scripts/governance/propose_mint.ts --network alfajores",
     "gov:queue": "hardhat run scripts/governance/queue_and_execute.ts --queue --network alfajores",
@@ -45,7 +45,15 @@
     "token:mint-once": "hardhat run scripts/token/mint_once.ts --network alfajores",
     "verify:flb": "hardhat run scripts/verify/verify_flb.ts --network alfajores",
     "verify:all": "hardhat run scripts/verify/verify_all.ts --network alfajores",
-    "tokenlist:gen": "ts-node scripts/tokenlist/generate.ts"
+    "tokenlist:gen": "ts-node scripts/tokenlist/generate.ts",
+    "airdrop:verify": "node -r dotenv/config scripts/verify_recipients.js",
+    "airdrop:transfer": "node -r dotenv/config scripts/airdrop_transfer_all.js",
+    "airdrop:mint:engine": "node -r dotenv/config scripts/mint_token_to_engine.js",
+    "airdrop:mint:all": "node -r dotenv/config scripts/mint_to_all.js",
+    "read:balance": "node -r dotenv/config scripts/read_balance.js",
+    "read:balance:hardhat": "hardhat run scripts/read/read_balance.ts --network alfajores",
+    "nonce:info": "node -r dotenv/config scripts/nonce_info.js",
+    "tx:cancel": "node -r dotenv/config scripts/cancel_pending.js"
   },
   "repository": {
     "type": "git",

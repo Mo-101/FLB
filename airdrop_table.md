@@ -1,26 +1,3 @@
-# FlameBorn — Deployments (Alfajores & Mainnet)
-
-**Policy:** Zero initial supply. FLB only mints on verified action via Engine/Guardian.
-
-## Networks
-
-- **Alfajores (Celo Testnet / 44787)**
-  - FlameBornToken: `0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1`
-  - FlameBornEngine: `0x82cA6C5FE9d7E834D908a2482aB76A51D64f5BB4`
-  - FlameBornHealthIDNFT: `0x1566c75a1Bad93a9fa5E2Da690395987E36e08e8`
-  - Verification: Published on Celoscan / Blockscout (constructor and initializer args documented below)
-  - Outstanding supply: `0` (burned in tx `0x6bef0ce88e04c8d85bf370e293aba35642c3e9746b5c67d3e370fdf589fef207` on 2025-10-11)
-
-- **Celo Mainnet (42220)**
-  - _Not deployed yet (intentionally)._ All references remain placeholders until mainnet go-live.
-
-## FlameBorn Airdrop — First 200 Believers
-
-- **Network:** Celo Alfajores Testnet
-- **Token:** FLB (`FlameBornToken.sol`)
-- **Contract:** `0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1`
-- **Snapshot Date:** 2025-10-12
-
 | # | Wallet Address | X Handle | Amount |
 |---|----------------|-----------|--------|
 | 1 | 0xE4D122c5ABd646fFD04284980262446aDE6e65aC | @i_akanimo | 1 FLB |
@@ -223,35 +200,3 @@
 | 198 | 0x4c2f5c733f02B0De0723Fb82100380955195D548 | @Peeyut4 | 1 FLB |
 | 199 | 0x6Cd18691aE0e16fCf9dC118285C03316026C4A34 | @Cyberttxt | 1 FLB |
 | 200 | 0x3698fe89b5CdC90d19A8eD3fdF8801b78790c06E | @Muhamma80689383 | 1 FLB |
-
-## Constructor / Initializer Args
-
-- **FlameBornToken**: `(admin: address)` – grants `DEFAULT_ADMIN_ROLE` and `MINTER_ROLE`, no mint.
-- **FlameBornEngine**: `(admin: address, token: address, nFT: address, actorReward: uint256, donationRewardRate: uint256)` – Engine holds `MINTER_ROLE`.
-- **FlameBornHealthIDNFT**: `(admin: address)` – soulbound NFT with registrar roles.
-
-## Post-deploy Steps (Alfajores)
-
-1. Grant `MINTER_ROLE` to Engine:
-
-   ```bash
-   npm run gov:grant-minter -- FLB_ADDR=0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1 MINTER=0x82cA6C5FE9d7E834D908a2482aB76A51D64f5BB4
-   ```
-
-2. Smoke tests:
-
-   ```bash
-   npm run read:supply --
-   npm run read:balance -- ADDR=0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1 WHO=<your_eoa>
-   ```
-
-3. Verify:
-
-   ```bash
-   npm run verify:flb -- FLB_ADDR=0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1 FLB_ADMIN=<admin_address>
-   npm run verify:all
-   ```
-
-## Canonical Record
-
-The single source of truth is `deployments/alfajores.json`. All docs, tokenlists, and automation must reference it for addresses and metadata.
