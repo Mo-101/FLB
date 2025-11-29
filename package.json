@@ -36,6 +36,8 @@
   "scripts": {
     "build": "tsc --noEmit",
     "test": "hardhat test",
+    "deploy:sepolia": "hardhat run scripts/deploy-sepolia.ts --network celoSepolia",
+    "verify:sepolia": "hardhat verify --network celoSepolia",
     "read:supply": "hardhat run scripts/read/read_total_supply.ts --network alfajores",
     "gov:grant-minter": "hardhat run scripts/governance/grant_minter.ts --network alfajores",
     "gov:propose-mint": "hardhat run scripts/governance/propose_mint.ts --network alfajores",

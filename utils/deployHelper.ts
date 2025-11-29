@@ -9,6 +9,7 @@ export interface DeployedAddresses {
     FlameBornToken?: ContractInfo;
     FlameBornHealthIDNFT?: ContractInfo;
     FlameBornEngine?: ContractInfo;
+    GrantManager?: ContractInfo;
   };
 }
 
@@ -145,7 +146,7 @@ export class DeployHelper {
 
   // Utility method to check if all required contracts are deployed
   hasAllContracts(): boolean {
-    const required = ["FlameBornToken", "FlameBornHealthIDNFT", "FlameBornEngine"];
+    const required = ["FlameBornToken", "FlameBornHealthIDNFT", "FlameBornEngine", "GrantManager"];
     return required.every(name =>
       this.isDeployed(name as keyof DeployedAddresses["contracts"])
     );

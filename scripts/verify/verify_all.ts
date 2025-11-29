@@ -20,26 +20,32 @@ async function main() {
 
   const manifest = JSON.parse(fs.readFileSync(filePath, "utf8"));
 
-  if (manifest.FlameBornToken?.implementation) {
-    await verify(manifest.FlameBornToken.implementation);
+  const contracts = {
+    FlameBornToken: manifest.FlameBornToken || manifest.contracts?.FlameBornToken,
+    FlameBornEngine: manifest.FlameBornEngine || manifest.contracts?.FlameBornEngine,
+    FlameBornHealthIDNFT: manifest.FlameBornHealthIDNFT || manifest.contracts?.FlameBornHealthIDNFT
+  };
+
+  if (contracts.FlameBornToken?.implementation) {
+    await verify(contracts.FlameBornToken.implementation);
   }
-  if (manifest.FlameBornToken?.proxy) {
+  if (contracts.FlameBornToken?.proxy) {
     console.log(
       "ℹ️  Skipping automatic proxy verification for FlameBornToken. Provide constructor data via TOKEN_PROXY_DATA env if needed."
     );
   }
 
-  if (manifest.FlameBornEngine?.implementation) {
-    await verify(manifest.FlameBornEngine.implementation);
+  if (contracts.FlameBornEngine?.implementation) {
+    await verify(contracts.FlameBornEngine.implementation);
   }
-  if (manifest.FlameBornEngine?.proxy) {
+  if (contracts.FlameBornEngine?.proxy) {
     console.log(
       "ℹ️  Skipping automatic proxy verification for FlameBornEngine. Provide constructor data via ENGINE_PROXY_DATA env if needed."
     );
   }
 
-  if (manifest.FlameBornHealthIDNFT?.address) {
-    await verify(manifest.FlameBornHealthIDNFT.address, []);
+  if (contracts.FlameBornHealthIDNFT?.address) {
+    await verify(contracts.FlameBornHealthIDNFT.address, []);
   }
 }
 

@@ -1,7 +1,7 @@
 const { newKit } = require('@celo/contractkit');
 
 function getKit() {
-  const rpc = process.env.ALFAJORES_RPC_URL || 'https://alfajores-forno.celo-testnet.org';
+  const rpc = process.env.CELO_SEPOLIA_RPC_URL || 'https://forno.celo.org/sepolia';
   const pk = process.env.PRIVATE_KEY;
   if (!pk) throw new Error('Missing PRIVATE_KEY in env');
 

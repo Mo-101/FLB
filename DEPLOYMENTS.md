@@ -1,21 +1,36 @@
-# FlameBorn Deployment Snapshot
+# FlameBorn Contract Deployments
 
-This legacy file now summarizes canonical deployments at a glance. For the detailed playbook, see `docs/DEPLOYMENTS.md`.
+For detailed runbooks see `docs/DEPLOYMENTS.md`. This summary tracks active networks and the canonical addresses committed in `deployments/*.json`.
 
-## Alfajores (Celo Testnet · 44787)
+## Celo Sepolia Testnet (Active)
 
-- **FlameBornToken (Proxy & Impl)**: `0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1`
-- **FlameBornEngine (Proxy & Impl)**: `0x82cA6C5FE9d7E834D908a2482aB76A51D64f5BB4`
-- **FlameBornHealthIDNFT**: `0x1566c75a1Bad93a9fa5E2Da690395987E36e08e8`
-- **Initial Supply**: `0`
-- **Minting Policy**: Only governance-approved actors with `MINTER_ROLE` may mint via `FlameBornEngine`.
+- **Chain ID:** `11142220`
+- **RPC:** `https://celo-sepolia-rpc.publicnode.com`
+- **Explorer:** `https://sepolia.celoscan.io`
 
-## Mainnet (Celo · 42220)
+| Contract | Address |
+| --- | --- |
+| FLB Token (proxy) | `0xb48Cc842C41d694260726FacACad556ef3483fEC` |
+| FLB Token (implementation) | `0x93F4c3B97aa4706e0a84f7667eB7f356F138dC60` |
+| FlameBorn HealthID NFT | `0x22Ad3B84f8B465aF478157752751ae6DcaA7eea6` |
+| FlameBorn Engine (proxy) | `0xE9Fcf860635E7B7C0a372e9aC790391168B56327` |
+| FlameBorn Engine (implementation) | `0xb8f4795f1aE3d8f51859d9b1E13d07399db2A5C8` |
+| Grant Manager | `0x8A976c9424e1482F6Ac51C6c5f0162357C6519c2` |
+| cUSD (stablecoin) | `0x4822e58de6f5e485eF90df51C41CE01721331dC0` |
 
-- **Status**: Not deployed. This document will be updated post-mainnet launch.
+**Roles:**
 
-## Canonical Source
+- Token `MINTER_ROLE` → `0xE9Fcf860635E7B7C0a372e9aC790391168B56327`
+- Token & NFT `DEFAULT_ADMIN_ROLE` → `0x2E75287C542B9b111906D961d58f2617059dDe3c`
 
-All deployment metadata is maintained in `deployments/alfajores.json` and mirrored in `docs/DEPLOYMENTS.md`.
+## Historical Networks
 
-**Last Updated:** 2025-10-11
+- **Alfajores (44787):** Legacy deployment kept for reference in `deployments/alfajores.json`.
+- **Celo Mainnet (42220):** _Not deployed yet_. This document will be updated post-mainnet launch.
+
+**Canonical sources:**
+
+- Sepolia → `deployments/celoSepolia.json`
+- Alfajores → `deployments/alfajores.json`
+
+**Last Updated:** 2025-11-29
