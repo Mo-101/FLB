@@ -5,8 +5,8 @@ For detailed runbooks see `docs/DEPLOYMENTS.md`. This summary tracks active netw
 ## Celo Sepolia Testnet (Active)
 
 - **Chain ID:** `11142220`
-- **RPC:** `https://celo-sepolia-rpc.publicnode.com`
-- **Explorer:** `https://sepolia.celoscan.io`
+- **RPC:** `https://celo-sepolia.blockscout.com/api/eth-rpc`
+- **Explorer:** `https://celo-sepolia.blockscout.com`
 
 | Contract | Address |
 | --- | --- |
@@ -17,6 +17,8 @@ For detailed runbooks see `docs/DEPLOYMENTS.md`. This summary tracks active netw
 | FlameBorn Engine (implementation) | `0xb8f4795f1aE3d8f51859d9b1E13d07399db2A5C8` |
 | Grant Manager | `0x8A976c9424e1482F6Ac51C6c5f0162357C6519c2` |
 | cUSD (stablecoin) | `0x4822e58de6f5e485eF90df51C41CE01721331dC0` |
+
+**Verification:** Implementations and proxies verified on Blockscout.
 
 **Roles:**
 

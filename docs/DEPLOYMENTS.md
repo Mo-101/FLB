@@ -1,8 +1,20 @@
-# FlameBorn — Deployments (Alfajores & Mainnet)
+# FlameBorn - Deployments (Sepolia, Alfajores & Mainnet)
 
 **Policy:** Zero initial supply. FLB only mints on verified action via Engine/Guardian.
 
 ## Networks
+
+- **Celo Sepolia (L2 / 11142220) — Active**
+  - FlameBornToken (proxy): `0xb48Cc842C41d694260726FacACad556ef3483fEC`
+  - FlameBornToken (implementation): `0x93F4c3B97aa4706e0a84f7667eB7f356F138dC60`
+  - FlameBornEngine (proxy): `0xE9Fcf860635E7B7C0a372e9aC790391168B56327`
+  - FlameBornEngine (implementation): `0xb8f4795f1aE3d8f51859d9b1E13d07399db2A5C8`
+  - FlameBornHealthIDNFT: `0x22Ad3B84f8B465aF478157752751ae6DcaA7eea6`
+  - GrantManager: `0x8A976c9424e1482F6Ac51C6c5f0162357C6519c2`
+  - cUSD (Sepolia): `0x4822e58de6f5e485eF90df51C41CE01721331dC0`
+  - RPC: `https://celo-sepolia.blockscout.com/api/eth-rpc`
+  - Explorer: `https://celo-sepolia.blockscout.com`
+  - Verification: Implementations and proxies verified on Blockscout.
 
 - **Alfajores (Celo Testnet / 44787)**
   - FlameBornToken: `0x2806D0C068E0Bdd553Fd9d533C40cAFA6657b5f1`
