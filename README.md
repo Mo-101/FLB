@@ -231,7 +231,7 @@ FLB/
 │   └── mainnet.json                   # Placeholder manifest
 ├── test/                          # Comprehensive test suite
 ├── PROVENANCE.md                  # 🔍 Contract provenance & verification
-└── LAUNCH_ANNOUNCEMENT.md         # 📢 Community launch materials
+└── docs/archive/LAUNCH_ANNOUNCEMENT.md         # 📢 Community launch materials
 ```
 
 ---
@@ -276,6 +276,7 @@ FLB/
 - 📘 [Deployment Guide](./DEPLOYMENT_GUIDE.md)
 - 🔧 [Celo Docs](https://docs.celo.org/)
 - 🔐 [OpenZeppelin Contracts](https://docs.openzeppelin.com/contracts)
+- 🌐 [Celo Sepolia self-hosted RPC](docs/CELO_SEPOLIA_NODE.md)
 - ⚙️ [Hardhat Docs](https://hardhat.org)
 
 ---
