@@ -7,6 +7,7 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 
 // Access control
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
 
 // ERC20 core and extensions
 import "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
@@ -20,51 +21,63 @@ contract FlameBornToken is
     ERC20BurnableUpgradeable,
     ERC20PausableUpgradeable,
     OwnableUpgradeable,
+    AccessControlUpgradeable,
     ERC20PermitUpgradeable,
     UUPSUpgradeable
 {
-    /**
-     * @custom:oz-upgrades-unsafe-allow constructor
-     * @custom:dev-run-script scripts/deploy_with_ethers.ts
-     * @custom:dev-doc https://docs.openzeppelin.com/contracts/4.x/erc20
-     * @dev Token decimals and initial supply constants
-     */
-    uint8 private constant _DECIMALS = 18;
-    uint256 private constant _INITIAL_SUPPLY = 1000000 * (10 ** _DECIMALS);
+    bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
 
-    /**
-     * @custom:oz-upgrades-unsafe-allow constructor
-     */
+    uint8 private constant _DECIMALS = 18;
+    uint256 private constant _INITIAL_SUPPLY = 1_000_000 * (10 ** _DECIMALS);
+
+    /// @custom:oz-upgrades-unsafe-allow constructor
     constructor() {
         _disableInitializers();
     }
 
-    /**
-     * @dev Initializes the contract with initial owner and mints initial supply
-     * @param initialOwner The address that will own the contract and receive initial supply
-     */
-    function initialize(address initialOwner) initializer public {
+    function initialize(address initialOwner) public initializer {
+        require(initialOwner != address(0), "Invalid owner");
+
         __ERC20_init("FlameBornToken", "FLB");
         __ERC20Burnable_init();
         __ERC20Pausable_init();
         __Ownable_init(initialOwner);
+        __AccessControl_init();
         __ERC20Permit_init("FlameBornToken");
         __UUPSUpgradeable_init();
-        
-        // Mint initial supply to the initial owner
+
+        _grantRole(DEFAULT_ADMIN_ROLE, initialOwner);
         _mint(initialOwner, _INITIAL_SUPPLY);
     }
 
-    function pause() public onlyOwner {
+    function pause() external onlyOwner {
         _pause();
     }
 
-    function unpause() public onlyOwner {
+    function unpause() external onlyOwner {
         _unpause();
     }
 
-    function mint(address to, uint256 amount) public onlyOwner {
+    function mint(address to, uint256 amount) external {
+        require(
+            msg.sender == owner() || hasRole(MINTER_ROLE, msg.sender),
+            "Not authorized to mint"
+        );
+        require(to != address(0), "Mint to zero address");
         _mint(to, amount);
+    }
+
+    function grantMinterRole(address account) external onlyOwner {
+        require(account != address(0), "Invalid address");
+        _grantRole(MINTER_ROLE, account);
+    }
+
+    function revokeMinterRole(address account) external onlyOwner {
+        _revokeRole(MINTER_ROLE, account);
+    }
+
+    function isMinter(address account) external view returns (bool) {
+        return hasRole(MINTER_ROLE, account) || account == owner();
     }
 
     function _authorizeUpgrade(address newImplementation)
@@ -73,12 +86,19 @@ contract FlameBornToken is
         override
     {}
 
-    // The following functions are overrides required by Solidity.
-
     function _update(address from, address to, uint256 value)
         internal
         override(ERC20Upgradeable, ERC20PausableUpgradeable)
     {
         super._update(from, to, value);
+    }
+
+    function supportsInterface(bytes4 interfaceId)
+        public
+        view
+        override(AccessControlUpgradeable)
+        returns (bool)
+    {
+        return super.supportsInterface(interfaceId);
     }
 }
